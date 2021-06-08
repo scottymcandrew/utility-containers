@@ -25,7 +25,8 @@ Then chuck it up to your Docker Hub account:
 Then run them! To streamline your flow, set shell aliases. This is how it looks in my ~/.zshrc file (dont forget to
 restart your shell or better, run e.g. `source ~/.zshrc`
 
-`smbservehere() {
+```
+smbservehere() {
     local sharename
     [[ -z $1 ]] && sharename="SHARE" || sharename=$1
     docker run --rm -it -p 445:445 -v "${PWD}:/tmp/serve" {your-docker-account}/impacket smbserver.py -smb2support $sharename /tmp/serve
@@ -35,7 +36,7 @@ alias nginxhere='docker run --rm -it -p 80:80 -p 443:443 -v "${PWD}:/srv/data" {
 alias webdavhere='docker run --rm -it -p 80:80 -v "${PWD}:/srv/data/share" {your-docker-account}/webdavhere:v1'
 alias metasploitports='docker run --rm -it -v "${HOME}/.msf4:/home/msf/.msf4" -p 6666-6699:6666-6699 metasploitframework/metasploit-framework ./msf
 alias reqdump='docker run --rm -it -p 80:3000 {your-docker-account}/reqdump:v1'
-`
+```
 
 # Bonus Points
 
